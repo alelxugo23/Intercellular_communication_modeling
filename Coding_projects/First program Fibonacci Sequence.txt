@@ -1,0 +1,92 @@
+First program: Fibonacci Sequence 
+
+x = 5 
+a = 1
+b = 1
+
+def Fibonacci_Sequence 
+ while i <= x
+    print(a+b)
+    b = a 
+    a+b = b 
+
+Mistakes to think about;
+
+the x in the function being defined is currently sitting outside the function* not too sure what this means as even though it's sittign outside the function, the program should still be able to read the value for x and then assign the i in the funciion (question/don't understand yet)
+
+There's no way to move through the values of i -> i needs to be changes such that it moves and creates a sequence of values as the list gets printed out
+
+What happens to the old values? should they just sit there?
+as the list grows, after a and b are separately printed, a+b is the only thing printed since it's the updating the value that gets printed every time that N moves 1 (perhaps i++ can be used to move through every a+b operation)
+
+corrections:
+
+x = 5 ##I'm keeping this for now since if I want to change N it will be easier/easy
+a, b = 1 ## saves time
+
+def Fibonacci_Sequence #same
+ while i <= x,
+a+b
+print(a+b)
+i++ ##move through N's values
+    b = a 
+    a+b = b
+
+
+without updating the values at the same time, 
+a gets a new value before it's able to get added to b
+
+
+a= 1
+b =1 
+
+
+a + b = 2
+
+a = b = 1
+b = a+b = 2
+
+1,1,2,3,5
+
+a = 1
+b = a + b
+1 + 
+
+
+2 + 1 =3
+a = b = 2
+b = 2 + 2 = 4
+x = 5
+a = 1
+b = 1
+
+def Fibonacci_Sequence 
+list print(a, b)
+  while i <= x,
+        list print(a+b)
+	i++ but python syntax
+    	a,b = b, a+b
+
+
+
+##how can a differential equation system be made from two separate equation describing an even and odd communication network where x stands for the odd pairs and y stands for the even pairs?
+
+initial "n" ->
+x changes independently of y    
+y changes interpedently of x  
+
+- (hypothesis for this thought-experiment) if there is no shared dependency found or otherwise embedded into the x and y equations where a value of x directly changes a parameter of y, then the model is one based on a system of equations rather than on differential equations.
+
+
+i.e without an element of interference that changes or links two equations together stemming from an initial parameter, this is not a differential equation 
+
+
+     
+
+
+
+
+
+
+
+
