@@ -1,0 +1,102 @@
+==============================================================
+                    GIT / GITHUB CHEAT SHEET
+==============================================================
+
+--------------------------------------------------------------
+SETTING UP (once per project)
+--------------------------------------------------------------
+git clone <url>
+    Downloads a GitHub repo to your computer as a new folder,
+    already connected to GitHub.
+
+git init
+    Turns the current folder into a repo. Use for a folder
+    that isn't on GitHub yet.
+
+git remote add origin <url>
+    Connects a local repo to a GitHub repo. "origin" is the
+    usual nickname for the GitHub copy.
+
+git remote -v
+    Shows which GitHub repo this folder is connected to.
+
+--------------------------------------------------------------
+DAILY WORKFLOW (in this order)
+--------------------------------------------------------------
+git pull
+    Downloads the newest changes from GitHub. Run before you
+    start working.
+
+git status
+    Shows what changed: untracked, modified, and staged files.
+    Always safe to run.
+
+git add <file>
+    Stages one file ("include this in the next snapshot").
+
+git add .
+    Stages everything new or changed in this folder and its
+    subfolders.
+
+git commit -m "message"
+    Saves a snapshot of everything staged, with your message,
+    to the history on your computer.
+
+git push
+    Uploads your commits to GitHub.
+
+--------------------------------------------------------------
+LOOKING AT HISTORY
+--------------------------------------------------------------
+git log --oneline
+    Lists past commits, one line each, newest first.
+    Press q to exit.
+
+git diff
+    Shows exactly which lines changed since the last commit
+    (before staging).
+
+--------------------------------------------------------------
+FIXING MISTAKES
+--------------------------------------------------------------
+git restore <file>
+    Throws away unsaved changes to a file and returns it to
+    the last committed version. WARNING: those edits are gone.
+
+git restore --staged <file>
+    Unstages a file you added by mistake. Your edits are kept.
+
+--------------------------------------------------------------
+BRANCHES (for later)
+--------------------------------------------------------------
+git branch
+    Lists branches and marks the one you're on.
+
+git switch -c <name>
+    Creates a new branch and moves to it, to try an idea
+    without touching your working version.
+
+git switch main
+    Goes back to the main branch.
+
+--------------------------------------------------------------
+THE ROUTINE TO MEMORIZE
+--------------------------------------------------------------
+git pull
+git status
+git add .
+git commit -m "describe what changed"
+git push
+
+TIP: Good commit messages say what changed and why.
+     Good: Add staircase layout for cricket connections
+     Bad:  update
+
+--------------------------------------------------------------
+GIT BASH PATH NOTES
+--------------------------------------------------------------
+- Use forward slashes:  cd ~/OneDrive/Documents/Coding_projects
+- ~ means your home folder (/c/Users/alugo)
+- Press Tab to auto-complete folder names
+- Up arrow = previous command, Ctrl+R = search history
+==============================================================

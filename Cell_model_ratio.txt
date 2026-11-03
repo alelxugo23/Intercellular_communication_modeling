@@ -1,0 +1,50 @@
+(* Three-layer cell boundary model driven by time                     *)
+(*   dw/dt = 1      (width grows 1 unit per second)                   *)
+(*   dr/dt = w^2,  do/dt = w,  dn/dt = 1/w                            *)
+(*   l = r + o + n,  A = l * w                                        *)
+(* To try another growth law, edit the w'[t] line (e.g. w'[t] == t). *)
+
+tMax = 5;
+sol = First@NDSolve[{
+     w'[t] == 1,
+     r'[t] == w[t]^2,
+     o'[t] == w[t],
+     n'[t] == 1/w[t],
+     w[0] == 1, r[0] == 1, o[0] == 1, n[0] == 1},
+    {w, r, o, n}, {t, 0, tMax}];
+
+{wF, rF, oF, nF} = {w, r, o, n} /. sol;
+
+(* Fixed plot range from the final state so the view doesn't jump *)
+lMax = rF[tMax] + oF[tMax] + nF[tMax];
+wMax = wF[tMax];
+
+Manipulate[
+ Module[{wv = wF[tt], rv = rF[tt], ov = oF[tt], nv = nF[tt], l, area},
+  l = rv + ov + nv;
+  area = l wv;
+  Row[{
+    Graphics[{
+      EdgeForm[{Thick, Black}],
+      RGBColor[0.92, 0.55, 0.55], Rectangle[{0, 0}, {wv, rv}],
+      RGBColor[0.97, 0.82, 0.45], Rectangle[{0, rv}, {wv, rv + ov}],
+      RGBColor[0.55, 0.72, 0.95], Rectangle[{0, rv + ov}, {wv, l}],
+      Black,
+      Style[Text["r", {wv/2, rv/2}], 16, Bold],
+      Style[Text["o", {wv/2, rv + ov/2}], 16, Bold],
+      Style[Text["n", {wv/2, rv + ov + nv/2}], 16, Bold]},
+     PlotRange -> {{0, 1.05 wMax}, {0, 1.05 lMax}}, AspectRatio -> 1,
+     Frame -> True, FrameLabel -> {"width w", "length l"},
+     ImageSize -> 380],
+    Spacer[20],
+    Grid[{
+      {"time t", NumberForm[tt, {5, 3}]},
+      {"width w", NumberForm[wv, {5, 3}]},
+      {"r", NumberForm[rv, {6, 3}]},
+      {"o", NumberForm[ov, {6, 3}]},
+      {"n", NumberForm[nv, {6, 3}]},
+      {"length l", NumberForm[l, {6, 3}]},
+      {Style["Area A", Bold], Style[NumberForm[area, {7, 3}], Bold, 18]}},
+     Alignment -> Left, Frame -> All, Spacings -> {2, 1}]
+    }]],
+ {{tt, 0, "Time t (s)"}, 0, tMax, Appearance -> "Labeled"}]
